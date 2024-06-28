@@ -1,0 +1,201 @@
+/* @font-face {
+  font-family: robotoFlex;
+  src: url(./assets/fonts/Roboto_Flex/static/RobotoFlex-Regular.ttf);
+} */
+
+html {
+  font-size: 12px;
+  font-family: "Roboto flex";
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.rainy {
+  background: url(./assets/gifs/rainy.gif);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.sunny {
+  background: url(./assets/gifs/sunny.gif);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.main-container {
+  background-color: transparent;
+  width: 68rem;
+  height: 45rem;
+  max-width: 80rem;
+  max-height: 70rem;
+  align-self: center;
+  justify-self: center;
+  box-shadow: 0rem 0rem 2rem 1rem rgba(0, 0, 0, 0.7);
+  border-radius: 2rem;
+  display: flex;
+}
+
+/* LEFT */
+
+.left-container {
+  width: 30%;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.left-container-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-container-top input {
+  font-family: "Roboto Flex";
+  opacity: 0.4;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+}
+
+.left-container-bottom {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-container-bottom h1 {
+  font-size: 6rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.left-container-top svg {
+  cursor: pointer;
+  height: 2rem;
+  fill: #fff;
+}
+
+.left-container-bottom svg {
+  height: 3rem;
+  justify-self: center;
+  fill: #fff;
+}
+
+/* RIGHT */
+
+.right-container {
+  background-color: #fff;
+  width: 70%;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+}
+
+.right-container-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-day {
+  margin-bottom: 0;
+}
+
+.month-day {
+  margin-top: 0rem;
+}
+
+.weather-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.right-container-top h3 {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.right-container-top span {
+  color: black;
+  font-weight: 700;
+}
+
+.right-container-mid h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 2rem;
+}
+
+.right-container-mid h3 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 100;
+}
+
+/* WEATHER CARDS */
+
+.next-days-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5rem;
+}
+
+.day-card img {
+  height: 1.5rem;
+}
+
+.day-card.selected {
+  box-shadow: 0rem 0rem 0.7rem 0.25rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.3rem;
+}
+
+.minmax-degrees {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+}
+.min {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.day {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.right-container-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
