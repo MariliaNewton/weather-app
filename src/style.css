@@ -62,6 +62,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .left-container-top input {
@@ -162,13 +163,15 @@ body {
 .next-days-container {
   display: flex;
   justify-content: space-between;
+  padding: 0rem 4rem;
 }
 
 .day-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 5rem;
+  width: 10rem;
+  cursor: pointer;
 }
 
 .day-card img {
@@ -178,12 +181,13 @@ body {
 .day-card.selected {
   box-shadow: 0rem 0rem 0.7rem 0.25rem rgba(0, 0, 0, 0.1);
   border-radius: 0.3rem;
+  background-color: rgba(0, 0, 0, 0.025);
 }
 
 .minmax-degrees {
   display: flex;
   justify-content: space-between;
-  width: 65%;
+  gap: 1rem;
 }
 .min {
   color: rgba(0, 0, 0, 0.4);
@@ -198,4 +202,58 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+/* HOURS CARDS */
+
+.next-hours {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.previous,
+.next {
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.next-hours-container {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+  user-select: none;
+}
+
+.next-hours-container .hour-card:first-child {
+  margin-left: auto;
+}
+.next-hours-container .hour-card:last-child {
+  margin-right: auto;
+}
+
+.hour-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 5rem;
+  user-select: none;
+}
+
+.hour-card img {
+  height: 1.5rem;
+  -webkit-user-drag: none;
+
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.hour {
+  font-weight: 500;
+  font-size: 1rem;
 }
