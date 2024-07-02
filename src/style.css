@@ -92,10 +92,10 @@ body {
   fill: #fff;
 }
 
-.left-container-bottom svg {
-  height: 3rem;
+.left-container-bottom .weather-logo {
+  height: 4rem;
   justify-self: center;
-  fill: #fff;
+  object-fit: contain;
 }
 
 /* RIGHT */
@@ -125,6 +125,10 @@ body {
   margin-top: 0rem;
 }
 
+/* .weather-data {
+  display: grid;
+  gap: 0.5rem;
+} */
 .weather-data {
   display: flex;
   flex-direction: column;
@@ -136,6 +140,10 @@ body {
   color: rgba(0, 0, 0, 0.5);
   font-weight: 300;
   font-size: 1rem;
+
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  justify-items: end;
 }
 
 .right-container-top span {
@@ -175,7 +183,7 @@ body {
 }
 
 .day-card img {
-  height: 1.5rem;
+  height: 1.9rem;
 }
 
 .day-card.selected {
@@ -244,7 +252,7 @@ body {
 }
 
 .hour-card img {
-  height: 1.5rem;
+  height: 1.9rem;
   -webkit-user-drag: none;
 
   user-select: none;
