@@ -243,10 +243,6 @@ label:active:after {
   margin-top: 0rem;
 }
 
-/* .weather-data {
-  display: grid;
-  gap: 0.5rem;
-} */
 .weather-data {
   display: flex;
   flex-direction: column;
@@ -420,16 +416,15 @@ label:active:after {
 /* PRELOADER */
 
 #preloader {
-  background-color: #000;
+  background-color: #0a0a27;
   width: 100%;
+  min-height: 100vh;
   position: fixed;
   z-index: 100;
-
   display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
 .ring {
@@ -438,21 +433,21 @@ label:active:after {
   height: 10rem;
   border-radius: 50%;
   animation: ring 1.5s linear infinite;
-  z-index: 101;
+  z-index: 200;
 }
 
 @keyframes ring {
   0% {
     transform: rotate(0deg);
-    box-shadow: 1px 5px 2px #0456c8;
+    box-shadow: 0.1rem 0.5rem 0.2rem #04c876;
   }
   50% {
     transform: rotate(180deg);
-    box-shadow: 1px 5px 2px #08c9ff;
+    box-shadow: 0.1rem 0.5rem 0.2rem #08c9ff;
   }
   100% {
     transform: rotate(360deg);
-    box-shadow: 1px 5px 2px #5615d8;
+    box-shadow: 0.1rem 0.5rem 0.2rem #7ea191;
   }
 }
 .ring:before {
@@ -463,5 +458,5 @@ label:active:after {
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.3);
 }

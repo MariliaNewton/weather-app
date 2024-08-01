@@ -71,10 +71,6 @@ export default class DisplayDOM {
     // Backup city if user location denied
     this.updateCity("Maceio", false);
 
-    // setTimeout(() => {
-    //   loader.style.display = "none";
-    // }, 2000);
-
     searchBtn.addEventListener("click", () => this.onCitySearch());
 
     citySearch.addEventListener("keypress", (e) => {
@@ -156,7 +152,7 @@ export default class DisplayDOM {
 
     const cityName = await apiCalls.getCity(latitude, longitude);
 
-    this.updateCity(cityName, false);
+    await this.updateCity(cityName, false);
 
     loader.style.display = "none";
   }
