@@ -1,6 +1,11 @@
 import APIcalls from "./apiCalls";
-import LocalStorage from "./localStorage";
-import { getFromLocalStorage, saveToLocalStorage } from "./localStorage";
+import {
+  getFromLocalStorage,
+  saveToLocalStorage,
+  moveToLastOnLocalStorage,
+} from "./localStorage";
+
+const loader = document.querySelector("#preloader");
 
 const citySearch = document.querySelector(".city-search");
 const searchBtn = document.querySelector(".search");
@@ -10,13 +15,11 @@ const leftBtnHoursContainer = document.querySelector(".previous");
 const body = document.querySelector("body");
 
 const dayCards = document.querySelectorAll(".day-card");
-const nextDaysContainer = document.querySelector(".next-days-container");
 const hourCards = document.querySelectorAll(".hour-card");
 const historyBtn = document.querySelector(".history-button");
 const historyCitiesContainer = document.querySelector(
   ".history-cities-container"
 );
-// const historyCities = document.querySelectorAll(".history-city");
 
 const city = document.querySelector(".city-name");
 const country = document.querySelector(".country-name");
@@ -64,16 +67,13 @@ export default class DisplayDOM {
   };
 
   init() {
+    this.renderUserCity();
+    // Backup city if user location denied
     this.updateCity("Maceio", false);
-    // this.renderUserCity();
 
-    // Render on history
-    // getFromLocalStorage()?.forEach((city) => {
-    //   console.log(city);
-    //   // Logic
-    // });
-
-    // this.renderCitiesHistory();
+    // setTimeout(() => {
+    //   loader.style.display = "none";
+    // }, 2000);
 
     searchBtn.addEventListener("click", () => this.onCitySearch());
 
@@ -129,15 +129,9 @@ export default class DisplayDOM {
     historyCitiesContainer.addEventListener("click", (e) => {
       if (!e.target.classList.contains("history-city")) return;
 
-      const historyCities = document.querySelectorAll(".history-city");
-
-      historyCities.forEach((city) => {
-        city.classList.remove("selected");
-      });
-
-      e.target.classList.add("selected");
-
       this.updateCity(e.target.textContent, false);
+      historyCitiesContainer.classList.toggle("hidden");
+      moveToLastOnLocalStorage(e.target.textContent);
     });
 
     // Allow scroll on next hours forecast
@@ -153,13 +147,18 @@ export default class DisplayDOM {
 
   async renderUserCity() {
     const coords = await apiCalls.getUserCoords();
-    if (!coords) return;
+    if (!coords) {
+      loader.style.display = "none";
+      return;
+    }
 
     const { latitude, longitude } = coords;
 
     const cityName = await apiCalls.getCity(latitude, longitude);
 
     this.updateCity(cityName, false);
+
+    loader.style.display = "none";
   }
 
   async updateCity(city, save = "true") {
@@ -169,9 +168,6 @@ export default class DisplayDOM {
 
     if (save) saveToLocalStorage(this.activeCity);
     this.activeForecast = this.activeData.forecast.forecastday;
-
-    // Render on history
-    // this.renderCitiesHistory(); Not working
 
     this.renderNext3Days();
     this.renderCityCountry();

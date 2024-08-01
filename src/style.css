@@ -31,7 +31,6 @@ label {
   position: relative;
   cursor: pointer;
   transition: 0.5s;
-  /* box-shadow: 0 0 2px #477a8550; */
 }
 label::after {
   font-family: "Roboto Flex";
@@ -180,12 +179,8 @@ label:active:after {
 
 .history-city:hover {
   font-size: 1.58rem;
-  transition: 0.25s;
-}
-
-.history-city.selected {
-  font-size: 1.5rem;
   color: #fff;
+  transition: 0.25s;
 }
 
 .left-container-top input {
@@ -420,4 +415,53 @@ label:active:after {
 
 .hidden {
   display: none;
+}
+
+/* PRELOADER */
+
+#preloader {
+  background-color: #000;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.ring {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  animation: ring 1.5s linear infinite;
+  z-index: 101;
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 1px 5px 2px #0456c8;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 1px 5px 2px #08c9ff;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 1px 5px 2px #5615d8;
+  }
+}
+.ring:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }

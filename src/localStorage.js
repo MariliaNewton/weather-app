@@ -13,4 +13,12 @@ function saveToLocalStorage(city) {
   window.localStorage.setItem("cities", JSON.stringify(cityList));
 }
 
-export { getFromLocalStorage, saveToLocalStorage };
+function moveToLastOnLocalStorage(city) {
+  const cityList = getFromLocalStorage() ?? [];
+
+  cityList.splice(cityList.indexOf(city), 1);
+  cityList.push(city);
+  window.localStorage.setItem("cities", JSON.stringify(cityList));
+}
+
+export { getFromLocalStorage, saveToLocalStorage, moveToLastOnLocalStorage };
