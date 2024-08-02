@@ -154,7 +154,9 @@ export default class DisplayDOM {
   async renderUserCity() {
     const coords = await apiCalls.getUserCoords();
     if (!coords) {
-      loader.style.display = "none";
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 2000);
       return;
     }
 
