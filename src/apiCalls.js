@@ -21,7 +21,7 @@ export default class APIcalls {
   async getCity(lat, lon) {
     try {
       const res = await fetch(
-        `http://api.weatherapi.com/v1/timezone.json?key=0f969d81ee194864a4c161831242406&q=${lat}, ${lon}
+        `https://api.weatherapi.com/v1/timezone.json?key=0f969d81ee194864a4c161831242406&q=${lat}, ${lon}
         `
       );
       if (!res.ok) {
