@@ -14,7 +14,7 @@ export default class APIcalls {
       const data = await res.json();
       return data;
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   }
 
@@ -30,7 +30,7 @@ export default class APIcalls {
       const data = await res.json();
       return data.location.name;
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   }
 

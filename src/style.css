@@ -163,7 +163,15 @@ label:active:after {
   margin-top: 2rem;
   max-height: 26rem;
   overflow-y: auto;
-  transition: all 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s allow-discrete;
+  display: block;
+}
+
+.history-cities-container.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .history-city {
@@ -171,6 +179,7 @@ label:active:after {
   cursor: pointer;
   font-size: 1.5rem;
   color: #c0c0c1;
+  color: rgba(0, 0, 0, 0.55);
   margin: 0;
   margin-bottom: 0.5rem;
   height: 1.8rem;

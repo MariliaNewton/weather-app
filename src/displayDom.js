@@ -25,23 +25,23 @@ const city = document.querySelector(".city-name");
 const country = document.querySelector(".country-name");
 const weekDayEl = document.querySelector(".week-day");
 const monthDayEl = document.querySelector(".month-day");
-const precipitation_c = document.querySelector(".precipitation-c");
-const precipitation_f = document.querySelector(".precipitation-f");
+const precipitationCelsius = document.querySelector(".precipitation-c");
+const precipitationFahrenheit = document.querySelector(".precipitation-f");
 const humidity = document.querySelector(".humidity");
-const wind_c = document.querySelector(".wind-c");
-const wind_f = document.querySelector(".wind-f");
-const weather_logo = document.querySelector(".weather-logo");
-const degrees_c = document.querySelector(".main-degrees-c");
-const degrees_f = document.querySelector(".main-degrees-f");
+const windCelsius = document.querySelector(".wind-c");
+const windFahrenheit = document.querySelector(".wind-f");
+const weatherLogo = document.querySelector(".weather-logo");
+const degreesCelsius = document.querySelector(".main-degrees-c");
+const degreesFahrenheit = document.querySelector(".main-degrees-f");
 const switchBtn = document.querySelector(".switch");
 const celsius = document.querySelectorAll(".celsius");
 const fahrenheit = document.querySelectorAll(".fahrenheit");
-const temp_c = document.querySelectorAll(".temp-c");
-const temp_f = document.querySelectorAll(".temp-f");
-const max_c = document.querySelectorAll(".max-c");
-const max_f = document.querySelectorAll(".max-f");
-const min_c = document.querySelectorAll(".min-c");
-const min_f = document.querySelectorAll(".min-f");
+const tempCelsius = document.querySelectorAll(".temp-c");
+const tempFahrenheit = document.querySelectorAll(".temp-f");
+const maxCelsius = document.querySelectorAll(".max-c");
+const maxFahrenheit = document.querySelectorAll(".max-f");
+const minCelsius = document.querySelectorAll(".min-c");
+const minFahrenheit = document.querySelectorAll(".min-f");
 
 const apiCalls = new APIcalls();
 
@@ -67,9 +67,10 @@ export default class DisplayDOM {
   };
 
   init() {
-    this.renderUserCity();
     // Backup city if user location denied
     this.updateCity("Maceio", false);
+
+    this.renderUserCity();
 
     searchBtn.addEventListener("click", () => this.onCitySearch());
 
@@ -95,12 +96,21 @@ export default class DisplayDOM {
     );
 
     switchBtn.addEventListener("click", () => {
-      [celsius, fahrenheit, temp_c, temp_f, max_c, max_f, min_c, min_f].forEach(
-        (entry) => entry.forEach((el) => el.classList.toggle("hidden"))
+      [
+        celsius,
+        fahrenheit,
+        tempCelsius,
+        tempFahrenheit,
+        maxCelsius,
+        maxFahrenheit,
+        minCelsius,
+        minFahrenheit,
+      ].forEach((entry) =>
+        entry.forEach((el) => el.classList.toggle("hidden"))
       );
 
-      degrees_c.classList.toggle("hidden");
-      degrees_f.classList.toggle("hidden");
+      degreesCelsius.classList.toggle("hidden");
+      degreesFahrenheit.classList.toggle("hidden");
     });
 
     rightBtnHoursContainer.addEventListener("click", () => {
@@ -119,14 +129,14 @@ export default class DisplayDOM {
 
     historyBtn.addEventListener("click", () => {
       this.renderCitiesHistory();
-      historyCitiesContainer.classList.toggle("hidden");
+      historyCitiesContainer.classList.toggle("visible");
     });
 
     historyCitiesContainer.addEventListener("click", (e) => {
       if (!e.target.classList.contains("history-city")) return;
 
       this.updateCity(e.target.textContent, false);
-      historyCitiesContainer.classList.toggle("hidden");
+      historyCitiesContainer.classList.toggle("visible");
       moveToLastOnLocalStorage(e.target.textContent);
     });
 
@@ -138,7 +148,7 @@ export default class DisplayDOM {
     if (!citySearch.value) return;
     this.updateCity(citySearch.value);
     citySearch.value = "";
-    historyCitiesContainer.classList.add("hidden");
+    historyCitiesContainer.classList.add("visible");
   }
 
   async renderUserCity() {
@@ -175,22 +185,22 @@ export default class DisplayDOM {
   }
 
   renderWeatherData(day) {
-    precipitation_c.textContent = `${this.activeForecast[day].day.totalprecip_mm} mm`;
-    precipitation_f.textContent = `${this.activeForecast[day].day.totalprecip_in} in`;
-    humidity.textContent = `${this.activeForecast[day].day.avghumidity}%`;
-    wind_c.textContent = `${this.activeForecast[day].day.maxwind_kph} kph`;
-    wind_f.textContent = `${this.activeForecast[day].day.maxwind_mph} mph`;
+    precipitationCelsius.textContent = `${this.activeForecast[day].day.totalprecip_mm} mm`;
+    precipitationFahrenheit.textContent = `${this.activeForecast[day].day.totalprecip_in} in`;
+    humidity.textContent = `${this.activeForecast[day].day.avghumidity} %`;
+    windCelsius.textContent = `${this.activeForecast[day].day.maxwind_kph} kph`;
+    windFahrenheit.textContent = `${this.activeForecast[day].day.maxwind_mph} mph`;
   }
 
   renderCurrentTemp(day) {
-    degrees_c.innerHTML = `${Math.trunc(
+    degreesCelsius.innerHTML = `${Math.trunc(
       this.activeForecast[day].day.avgtemp_c
     )}&deg`;
-    degrees_f.innerHTML = `${Math.trunc(
+    degreesFahrenheit.innerHTML = `${Math.trunc(
       this.activeForecast[day].day.avgtemp_f
     )}&deg`;
 
-    weather_logo.src = `https:${this.activeForecast[day].day.condition.icon}`;
+    weatherLogo.src = `https:${this.activeForecast[day].day.condition.icon}`;
   }
 
   renderNextHours(day) {
